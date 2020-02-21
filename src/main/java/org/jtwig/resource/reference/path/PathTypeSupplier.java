@@ -1,7 +1,7 @@
 package org.jtwig.resource.reference.path;
 
-import com.google.common.base.Function;
-import com.google.common.base.Supplier;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class PathTypeSupplier implements Supplier<PathType> {
     public static final String OS_NAME = "os.name";

@@ -1,13 +1,13 @@
 package org.jtwig.integration.expression;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
+import org.jtwig.util.Collections2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.parboiled.common.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -99,8 +99,8 @@ public class VariableNestedAccessTest {
             .add("objectGetter", TermType.OBJECT, ".valueGetter");
 
     private NestedTestClass testobject;
-    private ImmutableMap<String, Object> testmap;
-    private ImmutableList<Object> teslist;
+    private Map<String, Object> testmap;
+    private List<Object> teslist;
     private TestCase testCase;
 
     public VariableNestedAccessTest(TestCase testCase) {
@@ -140,24 +140,24 @@ public class VariableNestedAccessTest {
 
     @Before
     public void prepareTestMap() {
-        testmap = ImmutableMap.of(
-                "map", ImmutableMap.of(
+        testmap = Collections2.<String, Object>map(
+                "map", Collections2.mapOf(
                         "key", EXPECTED_VALUE
-                ),
-                "list", ImmutableList.of(
+                ))
+                .put("list", Collections2.listOf(
                         EXPECTED_VALUE
-                ),
+                )).put(
                 "object", new NestedTestClass()
-        );
+        ).build();
     }
 
     @Before
     public void prepareTestList() {
-        teslist = ImmutableList.of(
-                ImmutableMap.of(
+        teslist = Collections2.listOf(
+                Collections2.mapOf(
                         "key", EXPECTED_VALUE
                 ),
-                ImmutableList.of(
+                Collections2.listOf(
                         EXPECTED_VALUE
                 ),
                 new NestedTestClass()
@@ -281,8 +281,8 @@ public class VariableNestedAccessTest {
         private static final int MAX_DEPTH = 2;
 
         public final int value_field = EXPECTED_VALUE;
-        public final ImmutableMap<String, Integer> map_field = ImmutableMap.of("key", EXPECTED_VALUE);
-        public final ImmutableList<Integer> list_field = ImmutableList.of(EXPECTED_VALUE);
+        public final Map<String, Integer> map_field = Collections2.mapOf("key", EXPECTED_VALUE);
+        public final List<Integer> list_field = Collections2.listOf(EXPECTED_VALUE);
         public NestedTestClass nested_field;
 
         private NestedTestClass() {

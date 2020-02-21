@@ -1,6 +1,6 @@
 package org.jtwig.value.convert.bool;
 
-import com.google.common.collect.ImmutableMap;
+import org.jtwig.util.Collections2;
 import org.jtwig.value.Undefined;
 import org.jtwig.value.convert.Converter;
 import org.junit.Test;
@@ -83,7 +83,7 @@ public class BooleanConverterTest {
 
     @Test
     public void convertMap() throws Exception {
-        Converter.Result<Boolean> result = underTest.convert(ImmutableMap.of("String", "asd"));
+        Converter.Result<Boolean> result = underTest.convert(Collections2.mapOf("String", "asd"));
 
         assertEquals(true, result.get());
     }

@@ -1,7 +1,6 @@
 package org.jtwig.parser.config;
 
-import com.google.common.base.Optional;
-import org.apache.commons.lang3.builder.Builder;
+import java.util.Optional;
 import org.jtwig.parser.addon.AddonParserProvider;
 import org.jtwig.parser.cache.TemplateCache;
 import org.jtwig.parser.parboiled.expression.test.TestExpressionParser;
@@ -10,7 +9,7 @@ import org.jtwig.render.expression.calculator.operation.unary.UnaryOperator;
 import org.jtwig.util.builder.ListBuilder;
 import org.jtwig.util.builder.MapBuilder;
 
-public class JtwigParserConfigurationBuilder<B extends JtwigParserConfigurationBuilder> implements Builder<JtwigParserConfiguration> {
+public class JtwigParserConfigurationBuilder<B extends JtwigParserConfigurationBuilder> {
     private AndSyntaxConfigurationBuilder<B> syntaxConfiguration;
     private final ListBuilder<B, AddonParserProvider> addonParserProviders;
     private final ListBuilder<B, UnaryOperator> unaryOperators;
@@ -44,11 +43,11 @@ public class JtwigParserConfigurationBuilder<B extends JtwigParserConfigurationB
 
 
     public B withTemplateCache(TemplateCache templateCache) {
-        this.templateCache = Optional.fromNullable(templateCache);
+        this.templateCache = Optional.ofNullable(templateCache);
         return self();
     }
     public B withoutTemplateCache() {
-        this.templateCache = Optional.absent();
+        this.templateCache = Optional.empty();
         return self();
     }
 
@@ -76,7 +75,6 @@ public class JtwigParserConfigurationBuilder<B extends JtwigParserConfigurationB
         return (B) this;
     }
 
-    @Override
     public JtwigParserConfiguration build() {
         return new JtwigParserConfiguration(syntaxConfiguration.build(), addonParserProviders.build(), unaryOperators.build(), binaryOperators.build(), testExpressionParsers.build(), templateCache, properties.build());
     }

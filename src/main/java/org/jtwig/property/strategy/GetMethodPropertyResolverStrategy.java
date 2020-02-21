@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.VariableExpression;
 import org.jtwig.property.resolver.CallMethodPropertyResolver;
 import org.jtwig.property.resolver.PropertyResolver;
@@ -29,6 +29,6 @@ public class GetMethodPropertyResolverStrategy implements PropertyResolverStrate
                 return Optional.of(callMethodPropertyResolver);
             }
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

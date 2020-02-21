@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver.request;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.RenderRequest;
 
 import java.util.List;

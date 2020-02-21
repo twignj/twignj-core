@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.reflection.model.Value;
 import org.junit.Test;
@@ -15,6 +15,6 @@ public class EmptyPropertyResolverTest {
     public void resolve() throws Exception {
         Optional<Value> result = underTest.resolve(mock(PropertyResolveRequest.class));
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 }

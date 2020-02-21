@@ -1,6 +1,6 @@
 package org.jtwig.functions.impl.java;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.functions.FunctionRequest;
 import org.jtwig.reflection.model.Value;
@@ -34,7 +34,7 @@ public class ConstantFunctionTest {
         given(request.getEnvironment().getValueEnvironment().getStringConverter().convert(argument)).willReturn(argAsString);
         given(classpathFinder.load(className)).willReturn(Optional.of(javaClass));
         given(javaClass.constant(variableName)).willReturn(Optional.of(javaConstant));
-        given(javaConstant.value()).willReturn(Optional.<Value>absent());
+        given(javaConstant.value()).willReturn(Optional.empty());
         given(request.exception(String.format("Unable to retrieve value of constant %s in class %s", className, variableName))).willReturn(new CalculationException("message"));
 
         underTest.execute(request);

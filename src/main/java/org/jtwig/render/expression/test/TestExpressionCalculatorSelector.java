@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.test;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.test.TestExpression;
 import org.jtwig.render.expression.test.calculator.TestExpressionCalculator;
 
@@ -14,6 +14,6 @@ public class TestExpressionCalculatorSelector {
     }
 
     public Optional<TestExpressionCalculator> calculatorFor (TestExpression expression) {
-        return Optional.fromNullable(calculatorMap.get(expression.getClass()));
+        return Optional.ofNullable(calculatorMap.get(expression.getClass()));
     }
 }

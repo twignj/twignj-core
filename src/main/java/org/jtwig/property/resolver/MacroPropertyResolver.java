@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.macro.ImportedMacros;
 import org.jtwig.macro.Macro;
 import org.jtwig.macro.render.MacroRender;
@@ -19,7 +19,7 @@ public class MacroPropertyResolver implements PropertyResolver {
     @Override
     public Optional<Value> resolve(PropertyResolveRequest request) {
         Optional<Macro> resolve = macro.resolve(request.getPropertyName().get());
-        if (!resolve.isPresent()) return Optional.absent();
+        if (!resolve.isPresent()) return Optional.empty();
 
         return Optional.of(new Value(macroRender.render(request, request.getArguments(), resolve.get())));
     }

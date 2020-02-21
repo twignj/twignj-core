@@ -1,6 +1,6 @@
 package org.jtwig.util.builder;
 
-import com.google.common.base.Predicate;
+import java.util.function.Predicate;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -84,12 +84,7 @@ public class MapBuilderTest {
         map.put(preAddedKey1, preAddedValue1);
         map.put(preAddedKey2, preAddedValue2);
         MapBuilder<Object, String, Object> underTest = new MapBuilder<>(parent, map);
-        Map<String, Object> result = underTest.filter(new Predicate<Map.Entry<String, Object>>() {
-            @Override
-            public boolean apply(Map.Entry<String, Object> input) {
-                return input.getKey().equals(preAddedKey2);
-            }
-        }).build();
+        Map<String, Object> result = underTest.filter(input -> input.getKey().equals(preAddedKey2)).build();
 
         assertThat(result.get(preAddedKey2), is(preAddedValue2));
         assertThat(result.containsKey(preAddedKey1), is(false));

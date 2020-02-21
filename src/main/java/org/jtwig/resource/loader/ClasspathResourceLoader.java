@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 
 import java.io.InputStream;
@@ -17,7 +17,7 @@ public class ClasspathResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<Charset> getCharset(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ClasspathResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<URL> toUrl(String path) {
-        return Optional.fromNullable(classLoader.getResource(getPath(path)));
+        return Optional.ofNullable(classLoader.getResource(getPath(path)));
     }
 
     private String getPath(String path) {

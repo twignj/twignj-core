@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.binary.calculators.selection;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.ConstantExpression;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.FunctionExpression;
@@ -39,6 +39,6 @@ public class SelectionErrorMessageGenerator {
             return Optional.of(String.valueOf(((ConstantExpression) expression).getConstantValue()));
         }
 
-        return Optional.absent();
+        return Optional.empty();
     }
 }

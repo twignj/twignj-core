@@ -1,7 +1,6 @@
 package org.jtwig.render.node.renderer;
 
-import com.google.common.base.Optional;
-import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 import org.hamcrest.Matcher;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.VariableExpression;
@@ -10,6 +9,7 @@ import org.jtwig.model.tree.Node;
 import org.jtwig.render.RenderRequest;
 import org.jtwig.renderable.Renderable;
 import org.jtwig.renderable.impl.CompositeRenderable;
+import org.jtwig.util.Collections2;
 import org.jtwig.value.WrappedCollection;
 import org.jtwig.value.context.ValueContext;
 import org.jtwig.value.convert.Converter;
@@ -43,9 +43,8 @@ public class ForLoopNodeRenderTest {
         when(variableExpression.getIdentifier()).thenReturn("key");
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, expression)).thenReturn(collectionValue);
         when(request.getEnvironment().getValueEnvironment().getCollectionConverter().convert(collectionValue)).thenReturn(Converter.Result.defined(wrappedCollection));
-        when(wrappedCollection.iterator()).thenReturn(ImmutableMap.<String, Object>builder()
-                .put("key1", object1)
-                .build().entrySet().iterator());
+        when(wrappedCollection.iterator()).thenReturn(Collections2
+                .mapOf("key1", object1).entrySet().iterator());
         when(request.getEnvironment().getRenderEnvironment().getRenderNodeService().render(request, content)).thenReturn(renderable);
         when(request.getRenderContext().getCurrent(ValueContext.class)).thenReturn(mock(ValueContext.class));
 

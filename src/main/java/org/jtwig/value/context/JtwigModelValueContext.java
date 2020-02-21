@@ -1,6 +1,6 @@
 package org.jtwig.value.context;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.JtwigModel;
 import org.jtwig.reflection.model.Value;
 import org.jtwig.value.Undefined;

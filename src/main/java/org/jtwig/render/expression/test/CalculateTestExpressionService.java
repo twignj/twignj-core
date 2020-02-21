@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.test;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.test.TestExpression;
 import org.jtwig.model.position.Position;

@@ -1,7 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Supplier;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 
 import java.io.ByteArrayInputStream;
@@ -10,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class InMemoryResourceLoader implements ResourceLoader {
     public static InMemoryResourceLoader.Builder builder () {
@@ -24,7 +24,7 @@ public class InMemoryResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<Charset> getCharset(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
@@ -41,10 +41,10 @@ public class InMemoryResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<URL> toUrl(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
-    public static class Builder implements org.apache.commons.lang3.builder.Builder<InMemoryResourceLoader> {
+    public static class Builder {
         private final Map<String, Supplier<InputStream>> supplierMap = new HashMap<>();
 
         public Builder withResource (String key, String content) {
@@ -52,7 +52,6 @@ public class InMemoryResourceLoader implements ResourceLoader {
             return this;
         }
 
-        @Override
         public InMemoryResourceLoader build() {
             return new InMemoryResourceLoader(supplierMap);
         }

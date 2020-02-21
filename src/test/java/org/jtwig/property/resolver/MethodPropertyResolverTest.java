@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.property.strategy.method.ArgumentsConverter;
 import org.jtwig.reflection.model.Value;
@@ -28,11 +28,11 @@ public class MethodPropertyResolverTest {
         PropertyResolveRequest propertyResolveRequest = mock(PropertyResolveRequest.class, RETURNS_DEEP_STUBS);
 
         given(propertyResolveRequest.getArguments()).willReturn(asList());
-        given(argumentsConverter.convert(eq(javaMethod), argThat(arrayWithSize(0)))).willReturn(Optional.<Object[]>absent());
+        given(argumentsConverter.convert(eq(javaMethod), argThat(arrayWithSize(0)))).willReturn(Optional.empty());
 
         Optional<Value> result = underTest.resolve(propertyResolveRequest);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class MethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(propertyResolveRequest);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class MethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(propertyResolveRequest);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class MethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(propertyResolveRequest);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -92,6 +92,6 @@ public class MethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(propertyResolveRequest);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 }

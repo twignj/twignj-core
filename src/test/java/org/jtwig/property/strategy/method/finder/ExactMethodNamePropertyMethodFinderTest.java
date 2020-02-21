@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method.finder;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.strategy.method.MethodArgumentsMatcher;
 import org.jtwig.reflection.model.java.JavaClass;
 import org.jtwig.reflection.model.java.JavaMethod;

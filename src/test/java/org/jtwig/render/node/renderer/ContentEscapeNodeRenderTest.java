@@ -1,6 +1,6 @@
 package org.jtwig.render.node.renderer;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.model.tree.ContentEscapeNode;
 import org.jtwig.render.RenderRequest;
@@ -22,7 +22,7 @@ public class ContentEscapeNodeRenderTest {
 
         given(request.getEnvironment().getEscapeEnvironment().getDefaultEscapeEngine()).willReturn("default");
         given(contentEscapeNode.getEscapeEngineName()).willReturn(Optional.of("escape"));
-        given(request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor("escape")).willReturn(Optional.<EscapeEngine>absent());
+        given(request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor("escape")).willReturn(Optional.empty());
 
         underTest.render(request, contentEscapeNode);
     }

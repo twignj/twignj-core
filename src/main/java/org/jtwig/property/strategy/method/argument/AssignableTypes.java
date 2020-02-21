@@ -1,13 +1,13 @@
 package org.jtwig.property.strategy.method.argument;
 
-import com.google.common.collect.ImmutableMap;
+import org.jtwig.util.Collections2;
 
 import java.util.Map;
 
 public class AssignableTypes {
     private final IsNativeType isNativeType;
-    private static final Map<Class, Class> BOXED_TYPE = ImmutableMap.<Class, Class>builder()
-            .put(Integer.TYPE, Integer.class)
+    private static final Map<Class, Class> BOXED_TYPE = Collections2
+            .<Class, Class>map(Integer.TYPE, Integer.class)
             .put(Float.TYPE, Float.class)
             .put(Double.TYPE, Double.class)
             .put(Long.TYPE, Long.class)

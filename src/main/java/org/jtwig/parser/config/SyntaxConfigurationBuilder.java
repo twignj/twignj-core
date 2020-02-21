@@ -1,8 +1,6 @@
 package org.jtwig.parser.config;
 
-import org.apache.commons.lang3.builder.Builder;
-
-public class SyntaxConfigurationBuilder<B extends SyntaxConfigurationBuilder> implements Builder<SyntaxConfiguration> {
+public class SyntaxConfigurationBuilder<B extends SyntaxConfigurationBuilder> {
     private String startComment;
     private String endComment;
     private String startOutput;
@@ -55,7 +53,6 @@ public class SyntaxConfigurationBuilder<B extends SyntaxConfigurationBuilder> im
         return (B) this;
     }
 
-    @Override
     public SyntaxConfiguration build() {
         return new SyntaxConfiguration(
                 startComment,

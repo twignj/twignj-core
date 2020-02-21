@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.model.expression.ComprehensionListExpression;
 import org.jtwig.render.RenderRequest;

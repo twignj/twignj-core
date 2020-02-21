@@ -1,6 +1,6 @@
 package org.jtwig.util.builder;
 
-import com.google.common.base.Predicate;
+import java.util.function.Predicate;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -61,12 +61,7 @@ public class ListBuilderTest {
 
         String item1 = "item1";
         String item2 = "item2";
-        List<String> result = underTest.filter(new Predicate<String>() {
-            @Override
-            public boolean apply(String input) {
-                return input.equals(preAdded2);
-            }
-        }).build();
+        List<String> result = underTest.filter(input -> input.equals(preAdded2)).build();
 
         assertThat(result.size(), is(1));
         assertThat(result.contains(preAdded1), is(false));

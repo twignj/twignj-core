@@ -1,6 +1,6 @@
 package org.jtwig.resource.reference.path;
 
-import com.google.common.base.Function;
+import java.util.function.Function;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.binary;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.expression.calculator.operation.binary.calculators.BinaryOperationCalculator;
 
 import java.util.Map;
@@ -13,6 +13,6 @@ public class BinaryOperationCalculatorSelector {
     }
 
     public Optional<BinaryOperationCalculator> calculatorFor (BinaryOperator operator) {
-        return Optional.fromNullable(calculatorMap.get(operator.getClass()));
+        return Optional.ofNullable(calculatorMap.get(operator.getClass()));
     }
 }

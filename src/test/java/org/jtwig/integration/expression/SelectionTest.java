@@ -1,11 +1,10 @@
 package org.jtwig.integration.expression;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import org.jtwig.JtwigTemplate;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.integration.AbstractIntegrationTest;
 import org.jtwig.property.selection.cache.NoSelectionPropertyResolverCache;
+import org.jtwig.util.Collections2;
 import org.jtwig.value.context.MapValueContext;
 import org.junit.Rule;
 import org.junit.Test;
@@ -76,7 +75,7 @@ public class SelectionTest extends AbstractIntegrationTest {
     @Test
     public void propertyWithValueContext() throws Exception {
         String result = JtwigTemplate.inlineTemplate("{{ var.value }}")
-                .render(newModel().with("var", new MapValueContext(ImmutableMap.<String, Object>of("value", "nani"))));
+                .render(newModel().with("var", new MapValueContext(Collections2.mapOf("value", "nani"))));
 
         assertThat(result, is("nani"));
     }
@@ -235,7 +234,7 @@ public class SelectionTest extends AbstractIntegrationTest {
         private final List<String> field;
 
         public NestedTestClass (String value) {
-            field = ImmutableList.of(value);
+            field = Collections2.listOf(value);
         }
         public List<String> getField() {
             return field;

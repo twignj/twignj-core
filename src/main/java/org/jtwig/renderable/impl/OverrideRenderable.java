@@ -1,11 +1,11 @@
 package org.jtwig.renderable.impl;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.renderable.RenderResult;
 import org.jtwig.renderable.Renderable;
 
 public class OverrideRenderable implements Renderable {
-    private Optional<Renderable> override = Optional.absent();
+    private Optional<Renderable> override = Optional.empty();
     private final Renderable defaultContent;
 
     public OverrideRenderable(Renderable defaultContent) {
@@ -19,7 +19,7 @@ public class OverrideRenderable implements Renderable {
 
     @Override
     public RenderResult appendTo(RenderResult result) {
-        override.or(defaultContent).appendTo(result);
+        override.orElse(defaultContent).appendTo(result);
         return result;
     }
 

@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 
 import java.io.InputStream;
@@ -21,7 +21,7 @@ public class CompositeResourceLoader implements ResourceLoader {
             if (resourceLoader.exists(path))
                 return resourceLoader.getCharset(path);
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
@@ -50,6 +50,6 @@ public class CompositeResourceLoader implements ResourceLoader {
                 return resourceLoader.toUrl(path);
             }
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

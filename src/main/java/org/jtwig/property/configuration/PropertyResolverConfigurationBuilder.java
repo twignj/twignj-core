@@ -1,11 +1,10 @@
 package org.jtwig.property.configuration;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.property.selection.cache.SelectionPropertyResolverCache;
 import org.jtwig.property.strategy.PropertyResolverStrategy;
 import org.jtwig.util.builder.ListBuilder;
 
-public class PropertyResolverConfigurationBuilder<B extends PropertyResolverConfigurationBuilder> implements Builder<PropertyResolverConfiguration> {
+public class PropertyResolverConfigurationBuilder<B extends PropertyResolverConfigurationBuilder> {
     private SelectionPropertyResolverCache cache;
     private final ListBuilder<B, PropertyResolverStrategy> propertyResolverStrategies;
 
@@ -27,7 +26,6 @@ public class PropertyResolverConfigurationBuilder<B extends PropertyResolverConf
         return propertyResolverStrategies;
     }
 
-    @Override
     public PropertyResolverConfiguration build() {
         return new PropertyResolverConfiguration(
                 cache,

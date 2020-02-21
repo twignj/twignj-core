@@ -1,6 +1,6 @@
 package org.jtwig.parser.config;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.parser.addon.AddonParserProvider;
 import org.jtwig.parser.cache.InMemoryConcurrentPersistentTemplateCache;
 import org.jtwig.parser.cache.TemplateCache;

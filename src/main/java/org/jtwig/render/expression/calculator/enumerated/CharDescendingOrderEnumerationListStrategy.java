@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.enumerated;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.RenderRequest;
 import org.jtwig.value.convert.Converter;
 
@@ -25,6 +25,6 @@ public class CharDescendingOrderEnumerationListStrategy implements EnumerationLi
                 return Optional.of(result);
             }
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method.argument.group;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.strategy.method.convert.Converter;
 import org.jtwig.reflection.model.Value;
 import org.jtwig.reflection.model.java.JavaMethodArgument;
@@ -31,7 +31,7 @@ public class VarArgumentGroupTest {
 
         arguments.add(object);
         given(javaMethodArgument.type()).willReturn(String[].class);
-        given(converter.convert(object, String.class)).willReturn(Optional.<Value>absent());
+        given(converter.convert(object, String.class)).willReturn(Optional.empty());
 
         Optional<Value> result = underTest.toArgument(converter);
 

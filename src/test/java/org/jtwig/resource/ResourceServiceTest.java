@@ -1,6 +1,6 @@
 package org.jtwig.resource;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceException;
 import org.jtwig.resource.loader.ResourceLoader;
 import org.jtwig.resource.loader.TypedResourceLoader;
@@ -114,7 +114,7 @@ public class ResourceServiceTest {
         when(source.getType()).thenReturn("blah");
         when(reference.getType()).thenReturn("blah");
         when(resourceReferenceExtractor.extract("path")).thenReturn(reference);
-        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.<ResourceReference>absent());
+        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.empty());
 
         ResourceReference result = underTest.resolve(source, "path");
 
@@ -132,7 +132,7 @@ public class ResourceServiceTest {
         when(source.getType()).thenReturn("blah");
         when(reference.getType()).thenReturn("any");
         when(resourceReferenceExtractor.extract("path")).thenReturn(reference);
-        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.<ResourceReference>absent());
+        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.empty());
 
         ResourceReference result = underTest.resolve(source, "path");
 
@@ -150,7 +150,7 @@ public class ResourceServiceTest {
         when(source.getType()).thenReturn("blah");
         when(reference.getType()).thenReturn("tu");
         when(resourceReferenceExtractor.extract("path")).thenReturn(reference);
-        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.<ResourceReference>absent());
+        when(relativeResourceResolver.resolve(source, reference)).thenReturn(Optional.empty());
 
         ResourceReference result = underTest.resolve(source, "path");
 

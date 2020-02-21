@@ -1,9 +1,9 @@
 package org.jtwig.render.expression.calculator;
 
-import com.google.common.collect.ImmutableMap;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.MapExpression;
 import org.jtwig.render.RenderRequest;
+import org.jtwig.util.Collections2;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -21,8 +21,8 @@ public class MapExpressionCalculatorTest {
         Object aValue = new Object();
         Object bValue = new Object();
 
-        when(expression.getExpressions()).thenReturn(ImmutableMap.<String, Expression>builder()
-                .put("a", aExpression)
+        when(expression.getExpressions()).thenReturn(Collections2
+                .map("a", aExpression)
                 .put("b", bExpression)
                 .build());
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, aExpression)).thenReturn(aValue);
@@ -30,8 +30,8 @@ public class MapExpressionCalculatorTest {
 
         Object result = underTest.calculate(request, expression);
 
-        assertEquals(ImmutableMap.builder()
-                .put("a", aValue)
+        assertEquals(Collections2
+                .map("a", aValue)
                 .put("b", bValue)
                 .build(), result);
     }

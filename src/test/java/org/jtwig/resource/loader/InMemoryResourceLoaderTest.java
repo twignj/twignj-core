@@ -1,7 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Supplier;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

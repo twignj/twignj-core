@@ -1,6 +1,6 @@
 package org.jtwig.render.context.model;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.tree.BlockNode;
 import org.jtwig.resource.reference.ResourceReference;
 
@@ -26,23 +26,23 @@ public class BlockContext {
     public Optional<BlockDefinition> get(String identifier, int index) {
         LinkedList<BlockDefinition> stack = blocks.get(identifier);
         if (stack == null) {
-            return Optional.absent();
+            return Optional.empty();
         }
 
         try {
             return Optional.of(stack.get(index));
         } catch (IndexOutOfBoundsException e) {
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 
     public Optional<BlockDefinition> pollFirst(String identifier) {
         LinkedList<BlockDefinition> stack = blocks.get(identifier);
         if (stack == null) {
-            return Optional.absent();
+            return Optional.empty();
         }
 
-        return Optional.fromNullable(stack.pollFirst());
+        return Optional.ofNullable(stack.pollFirst());
     }
 
     public void addLast(BlockNode node, ResourceReference source) {

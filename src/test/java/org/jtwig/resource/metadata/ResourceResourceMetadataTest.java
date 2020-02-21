@@ -1,6 +1,6 @@
 package org.jtwig.resource.metadata;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.loader.ResourceLoader;
 import org.jtwig.resource.reference.ResourceReference;
 import org.junit.Test;

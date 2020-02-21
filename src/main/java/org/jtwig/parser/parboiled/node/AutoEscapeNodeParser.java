@@ -1,6 +1,6 @@
 package org.jtwig.parser.parboiled.node;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.tree.AutoEscapeNode;
 import org.jtwig.parser.parboiled.ParserContext;
 import org.jtwig.parser.parboiled.base.*;
@@ -56,7 +56,7 @@ public class AutoEscapeNodeParser extends NodeParser<AutoEscapeNode> {
                         Mandatory(limitsParser.endCode(), "Missing code island end")
                 ), "Missing endautoescape tag"),
 
-                push(new AutoEscapeNode(positionTrackerParser.pop(2), nodeParser.pop(), Optional.fromNullable(escapeModeParser.pop())))
+                push(new AutoEscapeNode(positionTrackerParser.pop(2), nodeParser.pop(), Optional.ofNullable(escapeModeParser.pop())))
         );
     }
 

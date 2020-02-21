@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.reflection.model.Value;
 import org.jtwig.reflection.model.java.JavaField;
@@ -21,7 +21,7 @@ public class FieldPropertyResolver implements PropertyResolver {
             return Optional.of(new Value(field.value(request.getContext())));
         } catch (IllegalAccessException | IllegalArgumentException e) {
             logger.debug("Unable to access field {} on object {}", field, request.getContext());
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 }

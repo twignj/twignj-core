@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.macro.ImportedMacros;
 import org.jtwig.macro.render.MacroRender;
 import org.jtwig.model.expression.FunctionExpression;
@@ -23,6 +23,6 @@ public class MacroPropertyResolverStrategy implements PropertyResolverStrategy {
                 return Optional.of(propertyResolver);
             }
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

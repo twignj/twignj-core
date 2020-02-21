@@ -1,6 +1,6 @@
 package org.jtwig.parser.cache;
 
-import com.google.common.base.Function;
+import java.util.function.Function;
 import org.jtwig.renderable.RenderException;
 
 import java.util.concurrent.ExecutionException;

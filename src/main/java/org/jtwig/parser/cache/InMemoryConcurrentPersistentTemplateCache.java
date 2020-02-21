@@ -1,16 +1,13 @@
 package org.jtwig.parser.cache;
 
-import com.google.common.base.Function;
-import com.google.common.base.Optional;
-import com.google.common.util.concurrent.SettableFuture;
-import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
+import java.util.concurrent.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.Optional;
 import org.jtwig.environment.Environment;
 import org.jtwig.model.tree.Node;
 import org.jtwig.parser.JtwigParser;
 import org.jtwig.resource.reference.ResourceReference;
-
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Future;
 
 public class InMemoryConcurrentPersistentTemplateCache implements TemplateCache {
     private final ConcurrentMap<ResourceReference, Future<Result>> cache;
@@ -20,28 +17,25 @@ public class InMemoryConcurrentPersistentTemplateCache implements TemplateCache 
         this(101, Integer.MAX_VALUE);
     }
     public InMemoryConcurrentPersistentTemplateCache(int initialCapacity, int maxValue) {
-        this.cache = new ConcurrentLinkedHashMap.Builder<ResourceReference, Future<Result>>()
-                .initialCapacity(initialCapacity)
-                .maximumWeightedCapacity(maxValue)
-                .build();
+        this.cache = new ConcurrentHashMap<>();
     }
 
     @Override
     public Node get(JtwigParser parser, Environment environment, ResourceReference resource) {
-        Optional<Future<Result>> optional = Optional.fromNullable(cache.get(resource));
+        Optional<Future<Result>> optional = Optional.ofNullable(cache.get(resource));
         if (optional.isPresent()) {
             return retriever.apply(optional.get()).get();
         } else {
-            SettableFuture<Result> future = SettableFuture.create();
+            CompletableFuture<Result> future = new CompletableFuture<>();
             Future<Result> result = cache.putIfAbsent(resource, future);
             if (result == null) {
                 try {
                     Node node = parser.parse(environment, resource);
-                    future.set(new Result(Optional.of(node), Optional.<RuntimeException>absent()));
+                    future.complete(new Result(Optional.of(node), Optional.<RuntimeException>empty()));
                     return node;
                 } catch (RuntimeException e) {
                     cache.remove(resource);
-                    future.set(new Result(Optional.<Node>absent(), Optional.of(e)));
+                    future.complete(new Result(Optional.<Node>empty(), Optional.of(e)));
                     throw e;
                 }
             } else {

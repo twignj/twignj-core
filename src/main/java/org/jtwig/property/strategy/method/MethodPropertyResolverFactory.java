@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.MethodPropertyResolver;
 import org.jtwig.property.resolver.PropertyResolver;
 import org.jtwig.reflection.model.java.JavaMethod;
@@ -18,6 +18,6 @@ public class MethodPropertyResolverFactory {
             return Optional.of(propertyResolver);
         }
 
-        return Optional.absent();
+        return Optional.empty();
     }
 }

@@ -1,6 +1,6 @@
 package org.jtwig.util;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.reflection.model.java.JavaClass;
 import org.jtwig.reflection.model.java.JavaClassManager;
 
@@ -23,7 +23,7 @@ public class ClasspathFinder {
         try {
             return Optional.of(javaClassManager.metadata(forName(className, false, classLoader)));
         } catch (Exception e) {
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 }

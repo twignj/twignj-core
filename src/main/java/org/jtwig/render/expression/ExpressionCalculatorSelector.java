@@ -1,6 +1,6 @@
 package org.jtwig.render.expression;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.render.expression.calculator.ExpressionCalculator;
 import org.jtwig.util.ErrorMessageFormatter;
@@ -15,7 +15,7 @@ public class ExpressionCalculatorSelector {
     }
 
     public ExpressionCalculator calculatorFor (Expression expression) {
-        Optional<ExpressionCalculator> optional = Optional.fromNullable(expressionCalculatorMap.get(expression.getClass()));
+        Optional<ExpressionCalculator> optional = Optional.ofNullable(expressionCalculatorMap.get(expression.getClass()));
         if (optional.isPresent()) {
             return optional.get();
         } else {

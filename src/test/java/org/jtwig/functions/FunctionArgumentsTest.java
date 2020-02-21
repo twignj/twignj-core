@@ -1,6 +1,6 @@
 package org.jtwig.functions;
 
-import com.google.common.base.Function;
+import java.util.function.Function;
 import org.jtwig.model.expression.Expression;
 import org.junit.Test;
 

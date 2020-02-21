@@ -1,6 +1,6 @@
 package org.jtwig.resource.metadata;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceException;
 
 import java.io.InputStream;
@@ -28,11 +28,11 @@ public class EmptyResourceMetadata implements ResourceMetadata {
 
     @Override
     public Optional<Charset> getCharset() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
     public Optional<URL> toUrl() {
-        return Optional.absent();
+        return Optional.empty();
     }
 }

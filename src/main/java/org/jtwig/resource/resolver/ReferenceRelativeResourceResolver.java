@@ -1,6 +1,6 @@
 package org.jtwig.resource.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.reference.ResourceReference;
 import org.jtwig.resource.resolver.path.RelativeReferenceResolver;
 
@@ -24,7 +24,7 @@ public class ReferenceRelativeResourceResolver implements RelativeResourceResolv
                 return Optional.of(newReference);
             }
         } else {
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 }

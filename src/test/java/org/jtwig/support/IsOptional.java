@@ -1,11 +1,11 @@
 package org.jtwig.support;
 
-import com.google.common.base.Objects;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-import com.google.common.base.Optional;
+import java.util.Objects;
+import java.util.Optional;
 
 public class IsOptional<T> extends TypeSafeMatcher<Optional<? extends T>> {
 
@@ -33,19 +33,19 @@ public class IsOptional<T> extends TypeSafeMatcher<Optional<? extends T>> {
 
     private IsOptional(boolean someExpected) {
         this.someExpected = someExpected;
-        this.expected = Optional.absent();
-        this.matcher = Optional.absent();
+        this.expected = Optional.empty();
+        this.matcher = Optional.empty();
     }
 
     private IsOptional(T value) {
         this.someExpected = true;
         this.expected = Optional.of(value);
-        this.matcher = Optional.absent();
+        this.matcher = Optional.empty();
     }
 
     private IsOptional(Matcher<T> matcher) {
         this.someExpected = true;
-        this.expected = Optional.absent();
+        this.expected = Optional.empty();
         this.matcher = Optional.of(matcher);
     }
 
@@ -69,7 +69,7 @@ public class IsOptional<T> extends TypeSafeMatcher<Optional<? extends T>> {
         if (!someExpected) {
             return !item.isPresent();
         } else if (expected.isPresent()) {
-            return item.isPresent() && Objects.equal(item.get(), expected.get());
+            return item.isPresent() && Objects.equals(item.get(), expected.get());
         } else if (matcher.isPresent()) {
             return item.isPresent() && matcher.get().matches(item.get());
         } else {

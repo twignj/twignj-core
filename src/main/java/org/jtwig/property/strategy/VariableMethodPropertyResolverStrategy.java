@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.VariableExpression;
 import org.jtwig.property.resolver.PropertyResolver;
 import org.jtwig.property.strategy.method.MethodPropertyResolverFactory;
@@ -30,6 +30,6 @@ public class VariableMethodPropertyResolverStrategy implements PropertyResolverS
             Optional<JavaMethod> method = propertyMethodFinder.find(javaClass, identifier, Collections.emptyList());
             return methodPropertyResolverFactory.create(method);
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

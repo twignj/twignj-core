@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 
 import java.io.File;
@@ -24,7 +24,7 @@ public class FileResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<Charset> getCharset(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class FileResourceLoader implements ResourceLoader {
         try {
             return Optional.of(file(path).toURI().toURL());
         } catch (MalformedURLException e) {
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 

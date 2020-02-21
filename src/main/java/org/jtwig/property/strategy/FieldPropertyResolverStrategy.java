@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.VariableExpression;
 import org.jtwig.property.resolver.FieldPropertyResolver;
 import org.jtwig.property.resolver.PropertyResolver;
@@ -28,6 +28,6 @@ public class FieldPropertyResolverStrategy implements PropertyResolverStrategy {
             }
         }
 
-        return Optional.absent();
+        return Optional.empty();
     }
 }

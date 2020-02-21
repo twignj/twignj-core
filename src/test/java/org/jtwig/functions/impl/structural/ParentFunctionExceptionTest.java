@@ -1,6 +1,6 @@
 package org.jtwig.functions.impl.structural;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.functions.FunctionRequest;
 import org.jtwig.functions.impl.structural.exceptions.ParentFunctionOutsideBlockException;
 import org.jtwig.functions.impl.structural.exceptions.ParentFunctionWithoutExtending;
@@ -49,7 +49,7 @@ public class ParentFunctionExceptionTest {
 
         BlockContext blockContextMock = mock(BlockContext.class);
         when(blockContextMock.pollFirst(anyString())).thenReturn(Optional.of(blockDefinitionMock));
-        when(blockContextMock.get(anyString())).thenReturn(Optional.<BlockDefinition>absent());
+        when(blockContextMock.get(anyString())).thenReturn(Optional.empty());
 
         when(request.getRenderContext().getCurrent(BlockReference.class)).thenReturn(blockReferenceMock);
         when(request.getRenderContext().getCurrent(BlockContext.class)).thenReturn(blockContextMock);
@@ -63,7 +63,7 @@ public class ParentFunctionExceptionTest {
         when(blockReferenceMock.getIdentifier()).thenReturn("ident");
 
         BlockContext blockContextMock = mock(BlockContext.class);
-        when(blockContextMock.pollFirst(anyString())).thenReturn(Optional.<BlockDefinition>absent());
+        when(blockContextMock.pollFirst(anyString())).thenReturn(Optional.empty());
 
         when(request.getRenderContext().getCurrent(BlockReference.class)).thenReturn(blockReferenceMock);
         when(request.getRenderContext().getCurrent(BlockContext.class)).thenReturn(blockContextMock);

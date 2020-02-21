@@ -1,15 +1,14 @@
 package org.jtwig.util.builder;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableList;
-import org.apache.commons.lang3.builder.Builder;
+import java.util.Collections;
+import java.util.function.Predicate;
 import org.jtwig.environment.and.AndBuilder;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ListBuilder<B, T> implements Builder<List<T>>, AndBuilder<B> {
+public class ListBuilder<B, T> implements AndBuilder<B> {
     private final B parent;
     private List<T> list = new ArrayList<>();
 
@@ -40,7 +39,7 @@ public class ListBuilder<B, T> implements Builder<List<T>>, AndBuilder<B> {
     public ListBuilder<B, T> filter (Predicate<T> predicate) {
         List<T> newList = new ArrayList<>();
         for (T item : this.list) {
-            if (predicate.apply(item)) {
+            if (predicate.test(item)) {
                 newList.add(item);
             }
         }
@@ -53,8 +52,7 @@ public class ListBuilder<B, T> implements Builder<List<T>>, AndBuilder<B> {
         return parent;
     }
 
-    @Override
     public List<T> build() {
-        return ImmutableList.copyOf(list);
+        return Collections.unmodifiableList(new ArrayList<>(this.list));
     }
 }

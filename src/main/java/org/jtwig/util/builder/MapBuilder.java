@@ -1,14 +1,13 @@
 package org.jtwig.util.builder;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableMap;
-import org.apache.commons.lang3.builder.Builder;
+import java.util.Collections;
+import java.util.function.Predicate;
 import org.jtwig.environment.and.AndBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapBuilder<B, K, V> implements Builder<Map<K, V>>, AndBuilder<B> {
+public class MapBuilder<B, K, V> {
     private final B parentBuilder;
     private Map<K, V> value = new HashMap<>();
 
@@ -37,7 +36,7 @@ public class MapBuilder<B, K, V> implements Builder<Map<K, V>>, AndBuilder<B> {
     public MapBuilder<B, K, V> filter (Predicate<Map.Entry<K, V>> predicate) {
         Map<K, V> newValue = new HashMap<>();
         for (Map.Entry<K, V> entry : this.value.entrySet()) {
-            if (predicate.apply(entry)) {
+            if (predicate.test(entry)) {
                 newValue.put(entry.getKey(), entry.getValue());
             }
         }
@@ -45,12 +44,10 @@ public class MapBuilder<B, K, V> implements Builder<Map<K, V>>, AndBuilder<B> {
         return this;
     }
 
-    @Override
     public Map<K, V> build() {
-        return ImmutableMap.copyOf(this.value);
+        return Collections.unmodifiableMap(new HashMap<>(this.value));
     }
 
-    @Override
     public B and() {
         return parentBuilder;
     }

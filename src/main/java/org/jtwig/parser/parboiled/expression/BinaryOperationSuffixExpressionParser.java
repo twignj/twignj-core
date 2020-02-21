@@ -1,21 +1,16 @@
 package org.jtwig.parser.parboiled.expression;
 
-import com.google.common.base.Function;
-import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.Multimaps;
+import java.util.*;
+import java.util.function.Function;
 import org.jtwig.model.expression.BinaryOperationExpression;
 import org.jtwig.parser.parboiled.ParserContext;
 import org.jtwig.parser.parboiled.base.PositionTrackerParser;
 import org.jtwig.parser.parboiled.base.SpacingParser;
 import org.jtwig.parser.parboiled.expression.operator.BinaryOperatorParser;
 import org.jtwig.render.expression.calculator.operation.binary.BinaryOperator;
+import org.jtwig.util.Collections2;
 import org.parboiled.Rule;
 import org.parboiled.annotations.Label;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 public class BinaryOperationSuffixExpressionParser extends ExpressionParser<BinaryOperationExpression> {
     final Collection<BinaryOperator> operators;
@@ -29,7 +24,7 @@ public class BinaryOperationSuffixExpressionParser extends ExpressionParser<Bina
     @Label("BinaryOperationSuffix Expression")
     public Rule ExpressionRule() {
         Rule initialExpression = EMPTY;
-        ImmutableListMultimap<Integer, BinaryOperator> index = Multimaps.index(operators, precedence());
+        Map<Integer, List<BinaryOperator>> index = Collections2.multimap(operators, precedence());
 
         List<Integer> integers = new ArrayList<>(index.keySet());
         Collections.sort(integers);

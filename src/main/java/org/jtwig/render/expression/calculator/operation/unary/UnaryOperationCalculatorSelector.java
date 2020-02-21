@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.unary;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.expression.calculator.operation.unary.calculators.UnaryOperationCalculator;
 
 import java.util.Map;
@@ -13,6 +13,6 @@ public class UnaryOperationCalculatorSelector {
     }
 
     public Optional<UnaryOperationCalculator> calculatorFor (UnaryOperator operator) {
-        return Optional.fromNullable(operationCalculatorMap.get(operator.getClass()));
+        return Optional.ofNullable(operationCalculatorMap.get(operator.getClass()));
     }
 }

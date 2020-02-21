@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ public class StringResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<Charset> getCharset(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
@@ -32,6 +32,6 @@ public class StringResourceLoader implements ResourceLoader {
 
     @Override
     public Optional<URL> toUrl(String path) {
-        return Optional.absent();
+        return Optional.empty();
     }
 }

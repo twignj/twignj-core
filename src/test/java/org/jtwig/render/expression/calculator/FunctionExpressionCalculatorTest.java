@@ -1,7 +1,6 @@
 package org.jtwig.render.expression.calculator;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Supplier;
+import java.util.Optional;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.functions.FunctionArguments;
 import org.jtwig.model.expression.Expression;
@@ -13,6 +12,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.containsString;
@@ -48,7 +48,7 @@ public class FunctionExpressionCalculatorTest {
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, argument1)).thenReturn(argument1Value);
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, argument2)).thenReturn(argument2Value);
         when(request.getEnvironment().getFunctionResolver().resolve(eq(request), eq(position), eq(function), eq(functionArguments)))
-                .thenReturn(Optional.<Supplier<Object>>absent());
+                .thenReturn(Optional.empty());
 
         expectedException.expect(CalculationException.class);
         expectedException.expectMessage(containsString(String.format("Unable to resolve function 'function' with arguments [%s, %s]", argument1Value, argument2Value)));

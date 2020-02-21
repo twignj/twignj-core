@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.property.strategy.method.ArgumentsConverter;
 import org.jtwig.reflection.model.Value;
@@ -22,7 +22,7 @@ public class MethodPropertyResolver implements PropertyResolver {
 
     @Override
     public Optional<Value> resolve(PropertyResolveRequest request) {
-        if (request.getContext() == null) return Optional.absent();
+        if (request.getContext() == null) return Optional.empty();
 
         Object[] arguments = request.getArguments().toArray();
         Optional<Object[]> convert = argumentsConverter.convert(javaMethod, arguments);
@@ -31,11 +31,11 @@ public class MethodPropertyResolver implements PropertyResolver {
                 return Optional.of(new Value(javaMethod.invoke(request.getContext(), convert.get())));
             } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
                 logger.debug("Unable to retrieve value from method {} with arguments {}", javaMethod, request.getArguments(), e);
-                return Optional.absent();
+                return Optional.empty();
             }
         } else {
             logger.debug("Cannot convert arguments provided {} to defined method arguments types {}.", arguments, javaMethod.arguments());
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 }

@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.unary;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.UnaryOperationExpression;
@@ -29,7 +29,7 @@ public class UnaryOperationServiceTest {
         UnaryOperator unaryOperator = mock(UnaryOperator.class);
 
         when(unaryOperationExpression.getOperator()).thenReturn(unaryOperator);
-        when(unaryOperationCalculatorSelector.calculatorFor(unaryOperator)).thenReturn(Optional.<UnaryOperationCalculator>absent());
+        when(unaryOperationCalculatorSelector.calculatorFor(unaryOperator)).thenReturn(Optional.empty());
 
         expectedException.expect(CalculationException.class);
         expectedException.expectMessage(containsString(String.format("No calculator for operator %s found", unaryOperator.getClass())));

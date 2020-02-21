@@ -1,6 +1,6 @@
 package org.jtwig.resource;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceException;
 import org.jtwig.resource.loader.ResourceLoader;
 import org.jtwig.resource.loader.TypedResourceLoader;
@@ -90,7 +90,7 @@ public class ResourceService {
             else
                 result = resourceLoader.get();
         } else {
-            Optional<ResourceLoader> loaderOptional = Optional.fromNullable(loaderMap.get(reference.getType()));
+            Optional<ResourceLoader> loaderOptional = Optional.ofNullable(loaderMap.get(reference.getType()));
             if (!loaderOptional.isPresent()) {
                 throw new ResourceException(String.format("Cannot load resource %s. Resource loader for type '%s' not configured", reference, reference.getType()));
             } else {
@@ -106,6 +106,6 @@ public class ResourceService {
                 return Optional.of(typedResourceLoader.getResourceLoader());
             }
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

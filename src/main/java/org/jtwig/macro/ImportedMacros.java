@@ -1,6 +1,6 @@
 package org.jtwig.macro;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import java.util.Map;
 
@@ -12,6 +12,6 @@ public class ImportedMacros {
     }
 
     public Optional<Macro> resolve(String name) {
-        return Optional.fromNullable(macros.get(name));
+        return Optional.ofNullable(macros.get(name));
     }
 }

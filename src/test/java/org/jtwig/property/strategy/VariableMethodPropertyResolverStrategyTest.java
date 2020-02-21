@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.FunctionExpression;
 import org.jtwig.property.resolver.PropertyResolver;
 import org.jtwig.property.strategy.method.MethodPropertyResolverFactory;

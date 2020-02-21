@@ -1,6 +1,5 @@
 package org.jtwig.render.config;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.test.TestExpression;
 import org.jtwig.model.tree.Node;
@@ -17,7 +16,7 @@ import org.jtwig.util.builder.MapBuilder;
 
 import java.nio.charset.Charset;
 
-public class RenderConfigurationBuilder<B extends RenderConfigurationBuilder> implements Builder<RenderConfiguration> {
+public class RenderConfigurationBuilder<B extends RenderConfigurationBuilder> {
     private boolean strictMode;
     private Charset outputCharset;
     private final MapBuilder<B, Class<? extends Node>, NodeRender> nodeRenders;
@@ -84,7 +83,6 @@ public class RenderConfigurationBuilder<B extends RenderConfigurationBuilder> im
         return (B) this;
     }
 
-    @Override
     public RenderConfiguration build() {
         return new RenderConfiguration(strictMode, outputCharset,
                 nodeRenders.build(),

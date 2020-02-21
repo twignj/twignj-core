@@ -1,13 +1,14 @@
 package org.jtwig.render.expression.calculator;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Supplier;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.functions.FunctionArguments;
 import org.jtwig.functions.resolver.FunctionResolver;
 import org.jtwig.model.expression.FunctionExpression;
 import org.jtwig.render.RenderRequest;
 import org.jtwig.util.ErrorMessageFormatter;
+
+import java.util.Optional;
+import java.util.function.Supplier;
 
 public class FunctionExpressionCalculator implements ExpressionCalculator<FunctionExpression> {
     private final FunctionArgumentsFactory functionArgumentsFactory;

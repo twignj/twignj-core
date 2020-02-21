@@ -1,6 +1,6 @@
 package org.jtwig.model.tree;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.VariableExpression;
 import org.jtwig.model.position.Position;
@@ -15,7 +15,7 @@ public class ForLoopNode extends ContentNode {
         super(position, content);
         if (variableExpression == null) {
             this.variableExpression = keyVariableExpression;
-            this.keyVariableExpression = Optional.absent();
+            this.keyVariableExpression = Optional.empty();
         } else {
             this.keyVariableExpression = Optional.of(keyVariableExpression);
             this.variableExpression = variableExpression;

@@ -1,8 +1,8 @@
 package org.jtwig.integration.function;
 
-import com.google.common.collect.ImmutableMap;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
+import org.jtwig.util.Collections2;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
@@ -54,9 +54,9 @@ public class LastFunctionTest {
 
     @Test
     public void lastMap() throws Exception {
-        String result = JtwigTemplate.inlineTemplate("{{ last(var) }}").render(JtwigModel.newModel().with("var", ImmutableMap.builder()
-                .put("a", 1)
-                .build()));
+        String result = JtwigTemplate.inlineTemplate("{{ last(var) }}").render(JtwigModel.newModel().with("var", Collections2
+                .mapOf("a", 1)
+                ));
 
         assertThat(result, is("1"));
     }

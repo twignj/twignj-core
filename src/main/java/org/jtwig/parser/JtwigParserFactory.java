@@ -1,6 +1,6 @@
 package org.jtwig.parser;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.parser.cache.TemplateCache;
 import org.jtwig.parser.config.JtwigParserConfiguration;
 import org.jtwig.parser.parboiled.ParboiledJtwigParser;

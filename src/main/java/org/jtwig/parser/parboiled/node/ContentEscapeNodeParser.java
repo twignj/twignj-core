@@ -1,6 +1,6 @@
 package org.jtwig.parser.parboiled.node;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.tree.ContentEscapeNode;
 import org.jtwig.parser.parboiled.ParserContext;
 import org.jtwig.parser.parboiled.base.*;
@@ -55,7 +55,7 @@ public class ContentEscapeNodeParser extends NodeParser<ContentEscapeNode> {
                         Mandatory(limitsParser.endCode(), "Missing code island end")
                 ), "Missing endcontentescape tag"),
 
-                push(new ContentEscapeNode(positionTrackerParser.pop(2), nodeParser.pop(), Optional.fromNullable(escapeModeParser.pop())))
+                push(new ContentEscapeNode(positionTrackerParser.pop(2), nodeParser.pop(), Optional.ofNullable(escapeModeParser.pop())))
         );
     }
 

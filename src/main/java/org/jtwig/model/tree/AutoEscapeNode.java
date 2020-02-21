@@ -1,6 +1,6 @@
 package org.jtwig.model.tree;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.position.Position;
 
 public class AutoEscapeNode extends ContentNode {

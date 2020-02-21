@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 

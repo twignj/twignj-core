@@ -1,6 +1,6 @@
 package org.jtwig.functions.impl.control;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.escape.HtmlEscapeEngine;
 import org.jtwig.escape.NoneEscapeEngine;

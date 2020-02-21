@@ -1,6 +1,6 @@
 package org.jtwig.property.selection;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.EmptyPropertyResolver;
 import org.jtwig.property.resolver.PropertyResolver;
 import org.jtwig.property.strategy.PropertyResolverStrategy;
@@ -24,7 +24,7 @@ public class BaseSelectionPropertyResolver implements SelectionPropertyResolver 
                 .calculate(request, request.getLeftExpression());
 
         if (leftValue == null || leftValue == Undefined.UNDEFINED)
-            return new SelectionResult(Optional.<PropertyResolver>absent(), Optional.<Value>absent());
+            return new SelectionResult(Optional.<PropertyResolver>empty(), Optional.<Value>empty());
 
         PropertyResolverStrategy.Request strategyRequest = new PropertyResolverStrategy.Request(
                 request, leftValue, request.getRightExpression()
@@ -37,6 +37,6 @@ public class BaseSelectionPropertyResolver implements SelectionPropertyResolver 
             }
         }
 
-        return new SelectionResult(Optional.<PropertyResolver>of(EmptyPropertyResolver.instance()), Optional.<Value>absent());
+        return new SelectionResult(Optional.<PropertyResolver>of(EmptyPropertyResolver.instance()), Optional.<Value>empty());
     }
 }

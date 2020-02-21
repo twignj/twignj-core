@@ -1,6 +1,6 @@
 package org.jtwig.escape;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
@@ -23,7 +23,7 @@ public class EscapeEngineSelector {
     }
 
     public Optional<EscapeEngine> escapeEngineFor (String name) {
-        return Optional.fromNullable(escapeEngineMap.get(StringUtils.lowerCase(name)));
+        return Optional.ofNullable(escapeEngineMap.get(StringUtils.lowerCase(name)));
     }
 
     public Collection<String> availableEscapeEngines() {

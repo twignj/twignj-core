@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.test;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.test.TestExpression;
 import org.jtwig.model.position.Position;
@@ -29,7 +29,7 @@ public class CalculateTestExpressionServiceTest {
         TestExpression testExpression = mock(TestExpression.class);
         Expression expression = mock(Expression.class);
 
-        when(testExpressionCalculatorSelector.calculatorFor(testExpression)).thenReturn(Optional.<TestExpressionCalculator>absent());
+        when(testExpressionCalculatorSelector.calculatorFor(testExpression)).thenReturn(Optional.empty());
 
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage(containsString(String.format("Cannot find test calculator for '%s'", testExpression.getClass())));

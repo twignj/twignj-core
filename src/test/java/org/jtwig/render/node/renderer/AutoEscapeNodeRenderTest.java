@@ -1,6 +1,6 @@
 package org.jtwig.render.node.renderer;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.escape.HtmlEscapeEngine;
 import org.jtwig.escape.JavascriptEscapeEngine;
@@ -31,7 +31,7 @@ public class AutoEscapeNodeRenderTest {
         Renderable renderable = mock(Renderable.class);
 
         when(node.getContent()).thenReturn(content);
-        when(node.getEscapeEngineName()).thenReturn(Optional.<String>absent());
+        when(node.getEscapeEngineName()).thenReturn(Optional.empty());
         when(request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor("default")).thenReturn(Optional.of(escapeEngine));
         when(request.getEnvironment().getEscapeEnvironment().getDefaultEscapeEngine()).thenReturn("default");
         when(request.getEnvironment().getRenderEnvironment().getRenderNodeService().render(request, content)).thenReturn(renderable);
@@ -71,7 +71,7 @@ public class AutoEscapeNodeRenderTest {
 
         when(node.getContent()).thenReturn(content);
         when(node.getEscapeEngineName()).thenReturn(Optional.of("js"));
-        when(request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor("js")).thenReturn(Optional.<EscapeEngine>absent());
+        when(request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor("js")).thenReturn(Optional.empty());
         when(request.getEnvironment().getEscapeEnvironment().getDefaultEscapeEngine()).thenReturn("default");
         when(request.getEnvironment().getRenderEnvironment().getRenderNodeService().render(request, content)).thenReturn(renderable);
 

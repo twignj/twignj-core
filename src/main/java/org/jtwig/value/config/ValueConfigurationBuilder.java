@@ -1,6 +1,5 @@
 package org.jtwig.value.config;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.util.builder.ListBuilder;
 import org.jtwig.value.WrappedCollection;
 import org.jtwig.value.compare.ValueComparator;
@@ -11,7 +10,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-public class ValueConfigurationBuilder<B extends ValueConfigurationBuilder> implements Builder<ValueConfiguration> {
+public class ValueConfigurationBuilder<B extends ValueConfigurationBuilder> {
     private MathContext mathContext;
     private RoundingMode roundingMode;
     private final ListBuilder<B, Converter<Boolean>> booleanConverters;
@@ -79,7 +78,6 @@ public class ValueConfigurationBuilder<B extends ValueConfigurationBuilder> impl
         return (B) this;
     }
 
-    @Override
     public ValueConfiguration build() {
         return new ValueConfiguration(mathContext, roundingMode, booleanConverters.build(),
                 numberConverters.build(), collectionConverters.build(),

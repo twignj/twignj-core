@@ -1,9 +1,9 @@
 package org.jtwig.functions.impl.mixed;
 
-import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.jtwig.functions.FunctionRequest;
 import org.jtwig.functions.SimpleJtwigFunction;
+import org.jtwig.util.Collections2;
 import org.jtwig.value.WrappedCollection;
 import org.jtwig.value.convert.Converter;
 
@@ -35,7 +35,12 @@ public class ReverseFunction extends SimpleJtwigFunction {
     }
 
     private Collection<Object> reverse(Collection<Object> values) {
-        return Lists.reverse(new ArrayList<>(values));
+        final ArrayList list = new ArrayList<>(values.size());
+        int i = list.size();
+        for (Object it : values) {
+            list.set(i--, it);
+        }
+        return Collections2.unmodifableList(list);
     }
 
 }

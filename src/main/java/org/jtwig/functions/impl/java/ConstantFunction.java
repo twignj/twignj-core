@@ -1,6 +1,6 @@
 package org.jtwig.functions.impl.java;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.functions.FunctionRequest;
 import org.jtwig.functions.SimpleJtwigFunction;
 import org.jtwig.reflection.model.Value;

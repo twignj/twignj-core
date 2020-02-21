@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.reflection.model.Value;
 import org.jtwig.reflection.model.java.JavaMethod;
@@ -21,13 +21,13 @@ public class CallMethodPropertyResolver implements PropertyResolver {
 
     @Override
     public Optional<Value> resolve(PropertyResolveRequest request) {
-        if (request.getContext() == null) return Optional.absent();
+        if (request.getContext() == null) return Optional.empty();
 
         try {
             return Optional.of(new Value(method.invoke(request.getContext(), new Object[]{argument})));
         } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
             logger.debug("Unable to retrieve value from method {} with argument {}", method, argument, e);
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 }

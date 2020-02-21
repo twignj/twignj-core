@@ -1,6 +1,5 @@
 package org.jtwig.environment;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.environment.and.*;
 import org.jtwig.environment.initializer.EnvironmentInitializer;
 import org.jtwig.extension.Extension;
@@ -9,7 +8,7 @@ import org.jtwig.render.expression.calculator.enumerated.EnumerationListStrategy
 import org.jtwig.util.builder.ListBuilder;
 import org.jtwig.util.builder.MapBuilder;
 
-public class EnvironmentConfigurationBuilder implements Builder<EnvironmentConfiguration> {
+public class EnvironmentConfigurationBuilder {
     public static EnvironmentConfigurationBuilder configuration () {
         return new EnvironmentConfigurationBuilder(new DefaultEnvironmentConfiguration());
     }
@@ -53,7 +52,6 @@ public class EnvironmentConfigurationBuilder implements Builder<EnvironmentConfi
         initializers = new ListBuilder<>(this, prototype.getInitializers());
     }
 
-    @Override
     public EnvironmentConfiguration build() {
         return new EnvironmentConfiguration(
                 resourceConfigurationBuilder.build(),

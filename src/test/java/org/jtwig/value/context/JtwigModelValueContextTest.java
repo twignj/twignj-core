@@ -1,6 +1,6 @@
 package org.jtwig.value.context;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.JtwigModel;
 import org.jtwig.reflection.model.Value;
 import org.jtwig.value.Undefined;
@@ -18,7 +18,7 @@ public class JtwigModelValueContextTest {
     public void resolveUndefined() throws Exception {
         String key = "key";
 
-        when(jtwigModel.get(key)).thenReturn(Optional.<Value>absent());
+        when(jtwigModel.get(key)).thenReturn(Optional.empty());
 
         Object result = underTest.resolve(key);
 

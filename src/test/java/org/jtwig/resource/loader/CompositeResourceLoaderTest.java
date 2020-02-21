@@ -1,6 +1,6 @@
 package org.jtwig.resource.loader;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.exceptions.ResourceNotFoundException;
 import org.junit.Before;
 import org.junit.Rule;
@@ -55,7 +55,7 @@ public class CompositeResourceLoaderTest {
         ResourceLoader resourceLoader = mock(ResourceLoader.class);
 
         loaders.add(resourceLoader);
-        when(resourceLoader.toUrl("path")).thenReturn(Optional.<URL>absent());
+        when(resourceLoader.toUrl("path")).thenReturn(Optional.empty());
 
         Optional<URL> result = underTest.toUrl("path");
 

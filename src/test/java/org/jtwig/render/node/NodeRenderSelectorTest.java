@@ -1,6 +1,6 @@
 package org.jtwig.render.node;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.tree.Node;
 import org.jtwig.render.node.renderer.NodeRender;
 import org.junit.Before;
@@ -27,7 +27,7 @@ public class NodeRenderSelectorTest {
 
         Optional<NodeRender> result = underTest.renderFor(node);
 
-        assertThat(result, is(Optional.<NodeRender>absent()));
+        assertThat(result, is(Optional.empty()));
     }
 
     @Test

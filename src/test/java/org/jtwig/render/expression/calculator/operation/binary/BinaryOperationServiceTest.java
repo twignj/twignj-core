@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.binary;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.BinaryOperationExpression;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.position.Position;
@@ -31,7 +31,7 @@ public class BinaryOperationServiceTest {
         BinaryOperator binaryOperator = mock(BinaryOperator.class);
 
         when(binaryOperationExpression.getBinaryOperator()).thenReturn(binaryOperator);
-        when(binaryOperationCalculatorSelector.calculatorFor(binaryOperator)).thenReturn(Optional.<BinaryOperationCalculator>absent());
+        when(binaryOperationCalculatorSelector.calculatorFor(binaryOperator)).thenReturn(Optional.empty());
 
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage(containsString(String.format("No calculator implementation for operation '%s'", binaryOperator.getClass())));

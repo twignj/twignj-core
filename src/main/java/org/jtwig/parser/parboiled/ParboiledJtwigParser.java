@@ -1,7 +1,6 @@
 package org.jtwig.parser.parboiled;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
+import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.jtwig.environment.Environment;
 import org.jtwig.model.tree.Node;
@@ -12,6 +11,7 @@ import org.jtwig.parser.util.ParboiledExceptionMessageExtractor;
 import org.jtwig.resource.ResourceService;
 import org.jtwig.resource.metadata.ResourceMetadata;
 import org.jtwig.resource.reference.ResourceReference;
+import org.jtwig.util.Collections2;
 import org.parboiled.errors.ParseError;
 import org.parboiled.errors.ParserRuntimeException;
 import org.parboiled.parserunners.BasicParseRunner;
@@ -46,7 +46,7 @@ public class ParboiledJtwigParser implements JtwigParser {
         try {
             ResourceMetadata resourceMetadata = resourceService.loadMetadata(resource);
             Charset charset = resourceMetadata.getCharset()
-                    .or(environment.getResourceEnvironment().getDefaultInputCharset());
+                    .orElse(environment.getResourceEnvironment().getDefaultInputCharset());
             ParsingResult<Node> result = runner.run(readAllText(resourceMetadata.load(), charset));
             if (result.hasErrors()) {
                 throw new ParseException(toMessage(result.parseErrors));

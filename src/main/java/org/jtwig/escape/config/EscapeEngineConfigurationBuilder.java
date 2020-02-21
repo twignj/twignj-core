@@ -1,10 +1,9 @@
 package org.jtwig.escape.config;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.util.builder.MapBuilder;
 
-public class EscapeEngineConfigurationBuilder<B extends EscapeEngineConfigurationBuilder> implements Builder<EscapeEngineConfiguration> {
+public class EscapeEngineConfigurationBuilder<B extends EscapeEngineConfigurationBuilder> {
     private String initialEngine;
     private String defaultEngine;
     private MapBuilder<B, String, EscapeEngine> escapeEngineMap;
@@ -37,7 +36,6 @@ public class EscapeEngineConfigurationBuilder<B extends EscapeEngineConfiguratio
         return escapeEngineMap;
     }
 
-    @Override
     public EscapeEngineConfiguration build() {
         return new EscapeEngineConfiguration(initialEngine, defaultEngine, escapeEngineMap.build());
     }

@@ -1,6 +1,6 @@
 package org.jtwig.resource.metadata;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import java.io.InputStream;
 import java.net.URL;

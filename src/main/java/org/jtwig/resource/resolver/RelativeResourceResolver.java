@@ -1,6 +1,6 @@
 package org.jtwig.resource.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.resource.reference.ResourceReference;
 
 public interface RelativeResourceResolver {

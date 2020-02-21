@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method.convert;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.strategy.method.argument.AssignableTypes;
 import org.jtwig.property.strategy.method.argument.IsNativeType;
 import org.jtwig.reflection.model.Value;

@@ -1,6 +1,6 @@
 package org.jtwig.property.selection;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.PropertyResolver;
 import org.jtwig.reflection.model.Value;
 

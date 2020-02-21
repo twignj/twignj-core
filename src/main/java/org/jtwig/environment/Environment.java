@@ -1,6 +1,6 @@
 package org.jtwig.environment;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.environment.EscapeEnvironment;
 import org.jtwig.functions.resolver.FunctionResolver;
 import org.jtwig.parser.JtwigParser;
@@ -67,11 +67,11 @@ public class Environment {
     }
 
     public <T> T parameter(String name, T defaultValue) {
-        return (T) Optional.fromNullable(parameters.get(name)).or(defaultValue);
+        return (T) Optional.ofNullable(parameters.get(name)).orElse(defaultValue);
     }
 
     public <T> T parameter (String name) {
-        Optional<Object> optional = Optional.fromNullable(parameters.get(name));
+        Optional<Object> optional = Optional.ofNullable(parameters.get(name));
 
         if (optional.isPresent()) {
             return (T) optional.get();

@@ -1,6 +1,6 @@
 package org.jtwig.render.node.renderer;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.model.tree.AutoEscapeNode;
 import org.jtwig.render.RenderRequest;
@@ -11,7 +11,7 @@ import org.jtwig.util.ErrorMessageFormatter;
 public class AutoEscapeNodeRender implements NodeRender<AutoEscapeNode> {
     @Override
     public Renderable render(RenderRequest request, AutoEscapeNode node) {
-        String escapeModeName = node.getEscapeEngineName().or(request.getEnvironment().getEscapeEnvironment().getDefaultEscapeEngine());
+        String escapeModeName = node.getEscapeEngineName().orElse(request.getEnvironment().getEscapeEnvironment().getDefaultEscapeEngine());
         Optional<EscapeEngine> escapeEngineOptional = request.getEnvironment().getEscapeEnvironment().getEscapeEngineSelector().escapeEngineFor(escapeModeName);
         if (escapeEngineOptional.isPresent()) {
             request.getRenderContext().set(EscapeEngine.class, escapeEngineOptional.get());

@@ -1,6 +1,6 @@
 package org.jtwig.property.selection.cache;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.PropertyResolver;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ public class SelectionPropertyResolverPersistentCache implements SelectionProper
 
     @Override
     public Optional<PropertyResolver> getCachedResolver(SelectionPropertyResolverCacheKey cacheKey) {
-        return Optional.fromNullable(hashMap.get(cacheKey));
+        return Optional.ofNullable(hashMap.get(cacheKey));
     }
 
     @Override

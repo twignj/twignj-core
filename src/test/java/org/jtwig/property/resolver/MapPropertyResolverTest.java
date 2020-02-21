@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.request.PropertyResolveRequest;
 import org.jtwig.reflection.model.Value;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class MapPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -31,6 +31,6 @@ public class MapPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 }

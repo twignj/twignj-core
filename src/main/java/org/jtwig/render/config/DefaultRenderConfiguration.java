@@ -1,6 +1,5 @@
 package org.jtwig.render.config;
 
-import com.google.common.collect.ImmutableMap;
 import org.jtwig.macro.render.ImportRender;
 import org.jtwig.model.expression.*;
 import org.jtwig.model.expression.test.*;
@@ -20,6 +19,7 @@ import org.jtwig.render.expression.calculator.operation.unary.impl.NotUnaryOpera
 import org.jtwig.render.expression.test.calculator.*;
 import org.jtwig.render.listeners.StagedRenderListener;
 import org.jtwig.render.node.renderer.*;
+import org.jtwig.util.Collections2;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ public class DefaultRenderConfiguration extends RenderConfiguration {
     public DefaultRenderConfiguration() {
         super(false,
                 Charset.defaultCharset(),
-                ImmutableMap.<Class<? extends Node>, NodeRender>builder()
-                        .put(AutoEscapeNode.class, new AutoEscapeNodeRender())
+                Collections2.
+                        <Class<? extends Node>, NodeRender>map(AutoEscapeNode.class, new AutoEscapeNodeRender())
                         .put(ContentEscapeNode.class, new ContentEscapeNodeRender())
                         .put(BlockNode.class, new BlockNodeRender())
                         .put(CompositeNode.class, new CompositeNodeRender())
@@ -51,8 +51,8 @@ public class DefaultRenderConfiguration extends RenderConfiguration {
                         .put(EmbedNode.class, new EmbedNodeRender())
                         .build(),
 
-                ImmutableMap.<Class<? extends Expression>, ExpressionCalculator>builder()
-                        .put(ConstantExpression.class, new ConstantExpressionCalculator())
+                Collections2
+                        .<Class<? extends Expression>, ExpressionCalculator>map(ConstantExpression.class, new ConstantExpressionCalculator())
                         .put(VariableExpression.class, new VariableExpressionCalculator())
                         .put(BinaryOperationExpression.class, new BinaryOperationExpressionCalculator())
                         .put(FunctionExpression.class, new FunctionExpressionCalculator(new FunctionArgumentsFactory()))
@@ -65,8 +65,8 @@ public class DefaultRenderConfiguration extends RenderConfiguration {
                         .put(TestOperationExpression.class, new TestOperationExpressionCalculator())
                         .build(),
 
-                ImmutableMap.<Class<? extends BinaryOperator>, BinaryOperationCalculator>builder()
-                        .put(MatchesOperator.class, new SimpleOperationCalculator(new MatchesOperationCalculator()))
+                Collections2
+                        .<Class<? extends BinaryOperator>, BinaryOperationCalculator>map(MatchesOperator.class, new SimpleOperationCalculator(new MatchesOperationCalculator()))
                         .put(ConcatOperator.class, new SimpleOperationCalculator(new ConcatOperationCalculator()))
                         .put(CompositionOperator.class, new CompositionOperationCalculator())
                         .put(SelectionOperator.class, new SelectionOperationCalculator(new SelectionErrorMessageGenerator()))
@@ -91,13 +91,13 @@ public class DefaultRenderConfiguration extends RenderConfiguration {
                         .put(OrOperator.class, new SimpleOperationCalculator(new BooleanOperationCalculator(new OrOperationCalculator())))
                         .build(),
 
-                ImmutableMap.<Class<? extends UnaryOperator>, UnaryOperationCalculator>builder()
-                        .put(NegativeUnaryOperator.class, new NegativeOperationCalculator())
+                Collections2
+                        .<Class<? extends UnaryOperator>, UnaryOperationCalculator>map(NegativeUnaryOperator.class, new NegativeOperationCalculator())
                         .put(NotUnaryOperator.class, new NotOperationCalculator())
                         .build(),
 
-                ImmutableMap.<Class<? extends TestExpression>, TestExpressionCalculator>builder()
-                        .put(NotTestExpression.class, new NotTestExpressionCalculator())
+                Collections2
+                        .<Class<? extends TestExpression>, TestExpressionCalculator>map(NotTestExpression.class, new NotTestExpressionCalculator())
                         .put(DefinedTestExpression.class, new DefinedTestExpressionCalculator())
                         .put(IsFunctionTestExpression.class, new IsFunctionTestExpressionCalculator())
                         .put(DivisibleByTestExpression.class, new DivisibleByTestExpressionCalculator())

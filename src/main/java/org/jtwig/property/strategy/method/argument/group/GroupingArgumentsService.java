@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method.argument.group;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.reflection.model.java.JavaMethod;
 import org.jtwig.reflection.model.java.JavaMethodArgument;
 
@@ -20,7 +20,7 @@ public class GroupingArgumentsService {
             }
         }
 
-        return Optional.absent();
+        return Optional.empty();
     }
 
     private List<ArgumentGroup> groupSimpleArgs(List<JavaMethodArgument> javaMethodArguments, Object[] arguments, int max) {

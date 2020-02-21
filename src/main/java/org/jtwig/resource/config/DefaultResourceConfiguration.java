@@ -1,6 +1,5 @@
 package org.jtwig.resource.config;
 
-import com.google.common.collect.ImmutableList;
 import org.jtwig.resource.loader.ClasspathResourceLoader;
 import org.jtwig.resource.loader.FileResourceLoader;
 import org.jtwig.resource.loader.StringResourceLoader;
@@ -14,6 +13,7 @@ import org.jtwig.resource.resolver.ReferenceRelativeResourceResolver;
 import org.jtwig.resource.resolver.RelativeResourceResolver;
 import org.jtwig.resource.resolver.path.RelativeFilePathResolver;
 import org.jtwig.resource.resolver.path.RelativePathResolver;
+import org.jtwig.util.Collections2;
 
 import java.nio.charset.Charset;
 
@@ -21,12 +21,12 @@ import static java.util.Collections.singleton;
 
 public class DefaultResourceConfiguration extends ResourceConfiguration {
     public DefaultResourceConfiguration() {
-        super(ImmutableList.<RelativeResourceResolver>builder()
+        super(Collections2.<RelativeResourceResolver>list()
                 .add(new ReferenceRelativeResourceResolver(singleton(ResourceReference.CLASSPATH), RelativePathResolver.instance()))
                 .add(new ReferenceRelativeResourceResolver(singleton(ResourceReference.FILE), RelativeFilePathResolver.instance()))
                 .build(),
-                ImmutableList.of(ResourceReference.STRING, ResourceReference.MEMORY),
-                ImmutableList.of(
+                Collections2.listOf(ResourceReference.STRING, ResourceReference.MEMORY),
+                Collections2.listOf(
                         new TypedResourceLoader(ResourceReference.FILE, FileResourceLoader.instance()),
                         new TypedResourceLoader(ResourceReference.CLASSPATH, new ClasspathResourceLoader(DefaultResourceConfiguration.class.getClassLoader())),
                         new TypedResourceLoader(ResourceReference.STRING, StringResourceLoader.instance())

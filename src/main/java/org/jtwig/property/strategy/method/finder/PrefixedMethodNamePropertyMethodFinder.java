@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method.finder;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.jtwig.reflection.model.java.JavaClass;
 import org.jtwig.reflection.model.java.JavaMethod;
@@ -17,7 +17,7 @@ public class PrefixedMethodNamePropertyMethodFinder implements PropertyMethodFin
     @Override
     public Optional<JavaMethod> find(JavaClass type, String identifier, List<Object> arguments) {
         if (arguments.isEmpty()) return type.method(prefix(identifier)).getMethod();
-        return Optional.absent();
+        return Optional.empty();
     }
 
     private String prefix(String identifier) {

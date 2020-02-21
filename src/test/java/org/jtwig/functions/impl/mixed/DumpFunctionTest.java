@@ -1,8 +1,9 @@
 package org.jtwig.functions.impl.mixed;
 
-import com.google.common.collect.ImmutableMap;
+import org.hamcrest.MatcherAssert;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
+import org.jtwig.util.Collections2;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -22,8 +23,8 @@ public class DumpFunctionTest {
     @Test
     public void dumpVariable() throws Exception {
         String result = JtwigTemplate.inlineTemplate("{{ dump(test) }}")
-                .render(JtwigModel.newModel().with("test", ImmutableMap.builder().put("test", "one").put("test2", "two").build()));
+                .render(JtwigModel.newModel().with("test", Collections2.map("test", "one").put("test2", "two").build()));
 
-        assertThat(result, containsString("{entries:[{key:test,value:one}"));
+        MatcherAssert.assertThat(result, containsString("{entries:[{key:test,value:one}"));
     }
 }

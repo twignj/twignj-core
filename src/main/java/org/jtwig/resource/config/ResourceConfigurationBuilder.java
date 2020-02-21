@@ -1,6 +1,5 @@
 package org.jtwig.resource.config;
 
-import org.apache.commons.lang3.builder.Builder;
 import org.jtwig.resource.loader.TypedResourceLoader;
 import org.jtwig.resource.reference.ResourceReferenceExtractor;
 import org.jtwig.resource.resolver.RelativeResourceResolver;
@@ -8,7 +7,7 @@ import org.jtwig.util.builder.ListBuilder;
 
 import java.nio.charset.Charset;
 
-public class ResourceConfigurationBuilder<B extends ResourceConfigurationBuilder> implements Builder<ResourceConfiguration> {
+public class ResourceConfigurationBuilder<B extends ResourceConfigurationBuilder> {
     private final ListBuilder<B, RelativeResourceResolver> resourceResolvers;
     private final ListBuilder<B, TypedResourceLoader> resourceLoaders;
     private final ListBuilder<B, String> absoluteResourceTypes;
@@ -55,7 +54,6 @@ public class ResourceConfigurationBuilder<B extends ResourceConfigurationBuilder
         return (B) this;
     }
 
-    @Override
     public ResourceConfiguration build() {
         return new ResourceConfiguration(resourceResolvers.build(),
                 absoluteResourceTypes.build(),

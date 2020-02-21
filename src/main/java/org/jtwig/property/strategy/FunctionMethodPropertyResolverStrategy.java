@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.FunctionExpression;
 import org.jtwig.property.resolver.PropertyResolver;
@@ -37,6 +37,6 @@ public class FunctionMethodPropertyResolverStrategy implements PropertyResolverS
             Optional<JavaMethod> method = propertyMethodFinder.find(javaClass, identifier, calculatedArguments);
             return methodPropertyResolverFactory.create(method);
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

@@ -1,6 +1,6 @@
 package org.jtwig.value.convert.collection;
 
-import com.google.common.collect.ImmutableMap;
+import org.jtwig.util.Collections2;
 import org.jtwig.value.WrappedCollection;
 import org.jtwig.value.convert.Converter;
 import org.junit.Test;
@@ -26,8 +26,8 @@ public class MapToCollectionConverterTest {
     public void convertMap() throws Exception {
         Object firstValue = "b";
         Object lastValue = "d";
-        Map<Object, Object> map = ImmutableMap.builder()
-                .put("a", firstValue)
+        var map = Collections2
+                .map("a", firstValue)
                 .put("c", lastValue)
                 .build();
 

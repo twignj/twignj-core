@@ -1,13 +1,14 @@
 package org.jtwig.render.expression.test.calculator;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Supplier;
 import org.jtwig.functions.FunctionArguments;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.model.expression.VariableExpression;
 import org.jtwig.model.expression.test.IsFunctionTestExpression;
 import org.jtwig.model.position.Position;
 import org.jtwig.render.RenderRequest;
+
+import java.util.Optional;
+import java.util.function.Supplier;
 
 public class IsFunctionTestExpressionCalculator implements TestExpressionCalculator<IsFunctionTestExpression> {
     @Override

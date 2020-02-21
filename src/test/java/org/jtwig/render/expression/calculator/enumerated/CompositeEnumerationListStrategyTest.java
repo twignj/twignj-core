@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.enumerated;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.RenderRequest;
 import org.junit.Before;
 import org.junit.Test;

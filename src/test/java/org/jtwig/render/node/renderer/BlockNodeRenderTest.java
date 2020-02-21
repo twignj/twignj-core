@@ -1,6 +1,6 @@
 package org.jtwig.render.node.renderer;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.model.tree.BlockNode;
 import org.jtwig.model.tree.Node;
 import org.jtwig.render.RenderRequest;

@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -34,7 +34,7 @@ public class CallMethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CallMethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class CallMethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -78,7 +78,7 @@ public class CallMethodPropertyResolverTest {
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 
     private Matcher<Object[]> arrayHasItem(final Object input) {

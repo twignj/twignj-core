@@ -1,6 +1,6 @@
 package org.jtwig.property.resolver;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.macro.ImportedMacros;
 import org.jtwig.macro.Macro;
 import org.jtwig.macro.render.MacroRender;
@@ -23,10 +23,10 @@ public class MacroPropertyResolverTest {
         PropertyResolveRequest request = mock(PropertyResolveRequest.class);
 
         given(request.getPropertyName()).willReturn(Optional.of(reference));
-        given(importedMacros.resolve(reference)).willReturn(Optional.<Macro>absent());
+        given(importedMacros.resolve(reference)).willReturn(Optional.empty());
 
         Optional<Value> result = underTest.resolve(request);
 
-        assertEquals(Optional.<Value>absent(), result);
+        assertEquals(Optional.empty(), result);
     }
 }

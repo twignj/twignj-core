@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.exceptions.CalculationException;
 import org.jtwig.model.expression.ComprehensionListExpression;
 import org.jtwig.model.expression.Expression;
@@ -35,7 +35,7 @@ public class ComprehensionListExpressionCalculatorTest {
         when(comprehensionListExpression.getEnd()).thenReturn(end);
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, start)).thenReturn(startValue);
         when(request.getEnvironment().getRenderEnvironment().getCalculateExpressionService().calculate(request, end)).thenReturn(endValue);
-        when(request.getEnvironment().getListEnumerationStrategy().enumerate(request, startValue, endValue)).thenReturn(Optional.<List<Object>>absent());
+        when(request.getEnvironment().getListEnumerationStrategy().enumerate(request, startValue, endValue)).thenReturn(Optional.empty());
 
         expectedException.expect(CalculationException.class);
         expectedException.expectMessage(containsString("Unable to calculate a list from a comprehension list starting with 'blah' and ending with 'bluh'"));

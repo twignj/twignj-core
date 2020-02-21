@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.strategy.method.argument.group.ArgumentGroup;
 import org.jtwig.property.strategy.method.argument.group.GroupingArgumentsService;
 import org.jtwig.property.strategy.method.convert.Converter;
@@ -26,7 +26,7 @@ public class ArgumentsConverterTest {
         JavaMethod javaMethod = mock(JavaMethod.class);
         Object[] objects = {};
 
-        given(groupingArgumentsService.groupArguments(javaMethod, objects)).willReturn(Optional.<List<ArgumentGroup>>absent());
+        given(groupingArgumentsService.groupArguments(javaMethod, objects)).willReturn(Optional.empty());
 
         Optional<Object[]> result = underTest.convert(javaMethod, objects);
 
@@ -42,7 +42,7 @@ public class ArgumentsConverterTest {
         ArgumentGroup argumentGroup = mock(ArgumentGroup.class);
 
         given(groupingArgumentsService.groupArguments(javaMethod, objects)).willReturn(Optional.of(asList(argumentGroup)));
-        given(argumentGroup.toArgument(converter)).willReturn(Optional.<Value>absent());
+        given(argumentGroup.toArgument(converter)).willReturn(Optional.empty());
 
         Optional<Object[]> result = underTest.convert(javaMethod, objects);
 

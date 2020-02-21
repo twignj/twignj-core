@@ -1,6 +1,6 @@
 package org.jtwig.property.selection.cache;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.resolver.PropertyResolver;
 
 public class NoSelectionPropertyResolverCache implements SelectionPropertyResolverCache {
@@ -14,7 +14,7 @@ public class NoSelectionPropertyResolverCache implements SelectionPropertyResolv
 
     @Override
     public Optional<PropertyResolver> getCachedResolver(SelectionPropertyResolverCacheKey cacheKey) {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override

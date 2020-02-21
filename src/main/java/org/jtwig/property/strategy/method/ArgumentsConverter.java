@@ -1,6 +1,6 @@
 package org.jtwig.property.strategy.method;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.property.strategy.method.argument.group.ArgumentGroup;
 import org.jtwig.property.strategy.method.argument.group.GroupingArgumentsService;
 import org.jtwig.property.strategy.method.convert.Converter;
@@ -30,11 +30,11 @@ public class ArgumentsConverter {
             for (ArgumentGroup argumentGroup : argumentGroups) {
                 Optional<Value> argumentValue = argumentGroup.toArgument(converter);
                 if (argumentValue.isPresent()) argumentValues.add(argumentValue.get().getValue());
-                else return Optional.absent();
+                else return Optional.empty();
             }
 
             return Optional.of(argumentValues.toArray());
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 }

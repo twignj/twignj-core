@@ -1,6 +1,6 @@
 package org.jtwig;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.reflection.model.Value;
 
 import java.util.HashMap;
@@ -30,6 +30,6 @@ public class JtwigModel {
     }
 
     public Optional<Value> get (String key) {
-        return Optional.fromNullable(values.get(key));
+        return Optional.ofNullable(values.get(key));
     }
 }

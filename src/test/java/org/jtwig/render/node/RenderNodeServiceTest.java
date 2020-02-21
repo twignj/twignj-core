@@ -1,6 +1,6 @@
 package org.jtwig.render.node;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.escape.EscapeEngine;
 import org.jtwig.escape.HtmlEscapeEngine;
 import org.jtwig.model.tree.Node;
@@ -27,7 +27,7 @@ public class RenderNodeServiceTest {
         Node node = mock(Node.class);
         RenderRequest renderRequest = mock(RenderRequest.class, RETURNS_DEEP_STUBS);
 
-        when(nodeRenderSelector.renderFor(node)).thenReturn(Optional.<NodeRender>absent());
+        when(nodeRenderSelector.renderFor(node)).thenReturn(Optional.empty());
 
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage(containsString("No render found for class org.jtwig.model.tree.Node"));

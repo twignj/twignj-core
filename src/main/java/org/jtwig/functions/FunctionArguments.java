@@ -1,9 +1,9 @@
 package org.jtwig.functions;
 
-import com.google.common.base.Function;
-import com.google.common.collect.ImmutableList;
+import java.util.function.Function;
 import org.jtwig.model.expression.Expression;
 import org.jtwig.reflection.model.Value;
+import org.jtwig.util.Collections2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,6 +61,6 @@ public class FunctionArguments {
     }
 
     public List<Expression> getExpressions() {
-        return ImmutableList.copyOf(expressions);
+        return Collections2.unmodifableList(expressions);
     }
 }

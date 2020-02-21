@@ -1,6 +1,6 @@
 package org.jtwig.functions.impl.structural;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.functions.FunctionRequest;
 import org.jtwig.functions.SimpleJtwigFunction;
 import org.jtwig.functions.impl.structural.exceptions.ParentFunctionOutsideBlockException;

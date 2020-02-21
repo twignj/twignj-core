@@ -1,6 +1,6 @@
 package org.jtwig.render.expression.calculator.operation.unary;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.jtwig.render.expression.calculator.operation.unary.calculators.UnaryOperationCalculator;
 import org.junit.Before;
 import org.junit.Test;
