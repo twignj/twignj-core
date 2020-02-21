@@ -41,6 +41,7 @@ import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;

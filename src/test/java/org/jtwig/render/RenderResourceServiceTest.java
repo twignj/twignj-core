@@ -34,13 +34,13 @@ public class RenderResourceServiceTest {
         RenderResourceRequest renderResourceRequest = mock(RenderResourceRequest.class, RETURNS_DEEP_STUBS);
         ResourceMetadata resourceMetadata = mock(ResourceMetadata.class);
 
-        when(environment.getParser().parse(environment, resource)).thenReturn(node);
+        when(renderRequest.getEnvironment().getParser().parse(eq(environment), eq(resource))).thenReturn(node);
         when(environment.getEscapeEnvironment().getInitialEscapeEngine()).thenReturn(initialEscapeMode);
         when(renderResourceRequest.getResource()).thenReturn(resource);
         when(renderResourceRequest.isNewBlockContext()).thenReturn(false);
         when(renderResourceRequest.isNewValueContext()).thenReturn(true);
         when(renderResourceRequest.getIncludeModel()).thenReturn(WrappedCollection.empty());
-        when(renderRequest.getRenderContext().getCurrent(ValueContext.class)).thenReturn(mock(ValueContext.class));
+        when(renderRequest.getRenderContext().getCurrent(eq(ValueContext.class))).thenReturn(mock(ValueContext.class));
         when(environment.getRenderEnvironment().getRenderNodeService().render(renderRequest, node))
                 .thenReturn(expectedRenderable);
         when(environment.getResourceEnvironment().getResourceService().loadMetadata(resource)).thenReturn(resourceMetadata);
@@ -59,9 +59,9 @@ public class RenderResourceServiceTest {
         Renderable expectedRenderable = mock(Renderable.class);
         RenderResourceRequest renderResourceRequest = mock(RenderResourceRequest.class, RETURNS_DEEP_STUBS);
 
-        when(renderRequest.getEnvironment().getParser().parse(environment, resource)).thenReturn(node);
+        when(renderRequest.getEnvironment().getParser().parse(eq(environment), eq(resource))).thenReturn(node);
         when(renderRequest.getEnvironment().getEscapeEnvironment().getInitialEscapeEngine()).thenReturn(initialEscapeMode);
-        when(renderRequest.getRenderContext().getCurrent(ValueContext.class)).thenReturn(mock(ValueContext.class));
+        when(renderRequest.getRenderContext().getCurrent(eq(ValueContext.class))).thenReturn(mock(ValueContext.class));
         when(renderResourceRequest.getResource()).thenReturn(resource);
         when(renderResourceRequest.isNewBlockContext()).thenReturn(true);
         when(renderResourceRequest.isNewValueContext()).thenReturn(true);
@@ -83,7 +83,7 @@ public class RenderResourceServiceTest {
         RenderResourceRequest renderResourceRequest = mock(RenderResourceRequest.class, RETURNS_DEEP_STUBS);
         ValueContext valueContext = mock(ValueContext.class, "Parent Context");
 
-        when(renderRequest.getEnvironment().getParser().parse(environment, resource)).thenReturn(node);
+        when(renderRequest.getEnvironment().getParser().parse(eq(environment), eq(resource))).thenReturn(node);
         when(renderRequest.getEnvironment().getEscapeEnvironment().getInitialEscapeEngine()).thenReturn(initialEscapeMode);
         when(renderResourceRequest.getResource()).thenReturn(resource);
         when(renderResourceRequest.isNewBlockContext()).thenReturn(true);
@@ -91,7 +91,7 @@ public class RenderResourceServiceTest {
         when(renderResourceRequest.getIncludeModel()).thenReturn(WrappedCollection.empty());
         when(renderRequest.getEnvironment().getRenderEnvironment().getRenderNodeService().render(renderRequest, node))
                 .thenReturn(expectedRenderable);
-        when(renderRequest.getRenderContext().getCurrent(ValueContext.class)).thenReturn(valueContext);
+        when(renderRequest.getRenderContext().getCurrent(eq(ValueContext.class))).thenReturn(valueContext);
 
         Renderable renderable = underTest.render(renderRequest, renderResourceRequest);
 
