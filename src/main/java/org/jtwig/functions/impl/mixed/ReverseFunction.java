@@ -7,8 +7,7 @@ import org.jtwig.util.Collections2;
 import org.jtwig.value.WrappedCollection;
 import org.jtwig.value.convert.Converter;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 public class ReverseFunction extends SimpleJtwigFunction {
     @Override
@@ -34,12 +33,9 @@ public class ReverseFunction extends SimpleJtwigFunction {
         }
     }
 
-    private Collection<Object> reverse(Collection<Object> values) {
-        final ArrayList list = new ArrayList<>(values.size());
-        int i = list.size();
-        for (Object it : values) {
-            list.set(i--, it);
-        }
+    private <T> Collection<T> reverse(Collection<T> values) {
+        final List<T> list = new ArrayList(values);
+        Collections.reverse(list);
         return Collections2.unmodifableList(list);
     }
 

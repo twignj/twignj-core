@@ -26,7 +26,7 @@ public class MapToCollectionConverterTest {
     public void convertMap() throws Exception {
         Object firstValue = "b";
         Object lastValue = "d";
-        var map = Collections2
+        final Map<String, Object> map = Collections2
                 .map("a", firstValue)
                 .put("c", lastValue)
                 .build();
