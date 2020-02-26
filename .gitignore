@@ -17,5 +17,5 @@ build/
 hs_err_pid*
 
 # Maven
-pom.xml
+pom.xml.*
 target/
