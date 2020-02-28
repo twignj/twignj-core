@@ -51,4 +51,13 @@ public class LoopCursor {
     public int getRevindex0 () {
         return getLength() - getIndex();
     }
+
+    @Override
+    public String toString() {
+        return "LoopCursor{" +
+                "index=" + index +
+                ", last=" + isLast() +
+                ", first=" + isFirst() +
+                '}';
+    }
 }
