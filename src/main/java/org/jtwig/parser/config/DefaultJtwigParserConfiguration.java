@@ -56,7 +56,15 @@ public class DefaultJtwigParserConfiguration extends JtwigParserConfiguration {
                         SameAsTestExpressionParser.class,
                         FunctionTestExpressionParser.class
                 ),
-                Optional.<TemplateCache>of(new InMemoryConcurrentPersistentTemplateCache()),
+                templateCache(),
                 Collections.<String, Object>emptyMap());
+    }
+
+    private static Optional<TemplateCache> templateCache() {
+        if ("true".equals(System.getProperty("twignj.notemplatecache"))) {
+            return Optional.empty();
+        } else {
+            return Optional.of(new InMemoryConcurrentPersistentTemplateCache());
+        }
     }
 }
